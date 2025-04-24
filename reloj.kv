@@ -1,0 +1,61 @@
+<RelojScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id: reloj_label
+            font_size: 48
+            text: "00:00:00"
+        Button:
+            text: "Ir al cronómetro"
+            on_release: app.root.current = "cronometro"
+        Button:
+            text: "Ir a la alarma"
+            on_release: app.root.current = "alarma"
+
+<CronometroScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id: cronometro_label
+            font_size: 48
+            text: "00:00"
+        BoxLayout:
+            size_hint_y: None
+            height: "50dp"
+            Button:
+                text: "Iniciar"
+                on_press: root.iniciar()
+            Button:
+                text: "Detener"
+                on_press: root.detener()
+            Button:
+                text: "Reiniciar"
+                on_press: root.reiniciar()
+        Button:
+            text: "Ir al reloj"
+            on_release: app.root.current = "reloj"
+        Button:
+            text: "Ir a la alarma"
+            on_release: app.root.current = "alarma"
+
+<AlarmaScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id: reloj_label
+            font_size: '48sp'
+            halign: 'center'
+            valign: 'middle'
+            text: ''
+        TextInput:
+            id: hora_input
+            multiline: False
+        Button:
+            text: "Activar alarma"
+            on_press: root.establecer_alarma(hora_input.text)
+        Button:
+            text: "Ir al reloj"
+            on_release: app.root.current = "reloj"
+        Button:
+            text: "Ir al cronómetro"
+            on_release: app.root.current = "cronometro"
